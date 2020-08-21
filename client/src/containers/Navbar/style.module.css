@@ -1,6 +1,7 @@
-.logo{
-    padding: 5px 10px 5px 10px;
-    display: inline-block;
-    vertical-align: middle;
-    color:white;
+.logo {
+  padding: 5px 10px 5px 10px;
+  display: inline-block;
+  vertical-align: middle;
+  color: white;
+  font-size: 30px;
 }
