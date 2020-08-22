@@ -1,15 +1,20 @@
 import React from "react";
+import InterviewerQ from '../../components/InterviewerQ/index.js';
+import IntervieweeQ from '../../components/IntervieweeQ/index.js';
+import './style.css'
 
-export default () => {
+const FAQ = () => {
     return(
         <div className='container'>
-            <h1 className='row'>
-                Frequently Asked Questions
+            <h1 className='row title'>
+                <strong>Frequently Asked Questions</strong>
             </h1>
             <div className='row'>
-                <interviewerQ />
-                <intervieweeQ />
+                <InterviewerQ />
+                <IntervieweeQ />
             </div>
         </div>
     )
 }
+
+export default FAQ;

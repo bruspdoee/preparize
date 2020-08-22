@@ -1,8 +1,9 @@
 module.exports = {
   development: {
     username: "root",
-    password: "Itsbrus16!",
+    password: "Gustavo11012015",
     database: "preparize_db",
+    port: 3306,
     host: "127.0.0.1",
     dialect: "mysql",
   },

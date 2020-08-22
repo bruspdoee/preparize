@@ -34,19 +34,19 @@ export default class newJob extends React.Component {
         { title: "Notes", field: "notes" },
       ],
       data: [
-        {
-          company: "Google",
-          jobTitle: "Software Engineer",
-          location: "New York, NY",
-          status: 3,
-          notes: "1st I/V went really well, awaiting next steps",
-        },
-        {
-          company: "YouTube",
-          jobTitle: "Junior Software Engineer",
-          location: "New York, NY",
-          status: 1,
-        },
+        // {
+        //   company: "Google",
+        //   jobTitle: "Software Engineer",
+        //   location: "New York, NY",
+        //   status: 3,
+        //   notes: "1st I/V went really well, awaiting next steps",
+        // },
+        // {
+        //   company: "YouTube",
+        //   jobTitle: "Junior Software Engineer",
+        //   location: "New York, NY",
+        //   status: 1,
+        // },
       ],
     };
   }
@@ -111,12 +111,13 @@ export default class newJob extends React.Component {
             new Promise((resolve) => {
               setTimeout(() => {
                 resolve();
-                // setState((prevState) => {
-                //   const data = [...prevState.data];
-                //   data.push(newData);
-                //   return { ...prevState, data };
-                // });
-              }, 600);
+                this.setState((prevState) => {
+                  const data = [...prevState.data];
+                  data.push(newData);
+                  return { ...prevState, data };
+                });
+              },
+              jobs.newJob(newData), 600);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve) => {
