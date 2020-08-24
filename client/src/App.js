@@ -8,8 +8,11 @@ import Alert from './components/Alert';
 import Navbar from './containers/Navbar';
 import LoadingSpinner from './components/LoadingSpinner';
 import ProtectedRoute from './components/ProtectedRoute';
+// import Questions from './pages/FAQ/index';
 import { user as userAPI } from "./utils/API";
 import './App.css';
+import FAQ from './pages/FAQ';
+import History from './pages/History';
 
 function App() {
 	const [user, setUser] = useState({});
@@ -61,6 +64,8 @@ function App() {
 						}
 						{...{ user, setUser, setLoading, setAlertInfo }} />
 					<ProtectedRoute exact path="/home" {...{user, loading, Component: Home} } />
+					<Route exact path="/faq"> <FAQ /> </Route>
+					<Route exact path="/history"> <History /> </Route>
 					<Route component={NoMatch} />
 				</Switch>
 			</Router>

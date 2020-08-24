@@ -30,6 +30,16 @@ const Navbar = (props) => {
       <Link to="/">
         <div className={`${style.logo} btn`}>Preparize</div>
       </Link>
+      {/* adding buttons for history and faq when logged in */}
+      {props.user.id ? 
+        <Link to='/faq'>
+          <Button>FAQ</Button>
+        </Link> &&
+        <Link to='/history'>
+          <Button>History</Button>
+        </Link>
+        : <></>
+      }
       {props.user.id ? (
         <Button theme="dark" onClick={signout}>
           <i className="fa fa-sign-out fa-1x" aria-hidden="true"></i>
