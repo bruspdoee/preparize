@@ -34,5 +34,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
   });
+
+  // Jobs.associate = function(models) {
+  //   Jobs.belongsTo(models.User);
+  // };
+  
   return Jobs;
 };

@@ -18,6 +18,7 @@ function App() {
 	const [user, setUser] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [alertInfo, setAlertInfo] = useState({message:"", theme:"success"});
+	const [jobs, setJob] = useState({});
 
    useEffect(() => {
 		// no catch, add if you want to check for it.
@@ -63,7 +64,19 @@ function App() {
 							/>
 						}
 						{...{ user, setUser, setLoading, setAlertInfo }} />
-					<ProtectedRoute exact path="/home" {...{user, loading, Component: Home} } />
+					<Route exact path="/home" 
+						render={props => 
+							<Home 
+							{...props} 
+							jobs={jobs} 
+							setJob={setJob} 
+							user={user} 
+							{...{user, 
+								// loading
+							} 
+							} />
+						}>
+					</Route>
 					<Route exact path="/faq"> <FAQ /> </Route>
 					<Route exact path="/history"> <History /> </Route>
 					<Route component={NoMatch} />

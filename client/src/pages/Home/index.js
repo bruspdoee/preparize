@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
-import jobs from "../../utils/API/jobs";
+import {jobs as JobsAPI, jobs} from "../../utils/API/";
 
 export default class newJob extends React.Component {
   constructor(props) {
@@ -51,8 +51,9 @@ export default class newJob extends React.Component {
     };
   }
 
-  componentDidMount() {
-    jobs
+  componentWillMount() {
+    // console.log(this.state.user.email)
+    JobsAPI
       .findAll()
       .then((res) => {
         console.log(res);
@@ -73,7 +74,7 @@ export default class newJob extends React.Component {
       })
       .catch((e) => console.log(e));
   }
-
+  
   // handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   console.log(event.target);
@@ -100,6 +101,9 @@ export default class newJob extends React.Component {
   // };
 
   render() {
+    console.log(this.state.jobs);
+    // console.log(this.state.user.email);
+
     return (
       <MaterialTable
         // onChange={this.handleInputChange}
@@ -117,7 +121,7 @@ export default class newJob extends React.Component {
                   return { ...prevState, data };
                 });
               },
-              jobs.newJob(newData), 600);
+              JobsAPI.newJob(newData), 600);
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve) => {

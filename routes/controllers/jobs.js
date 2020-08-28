@@ -1,35 +1,43 @@
 // get reference to DB
 const db = require("../../models");
-const { sequelize } = require("../../models");
 
-module.exports = {
-  newJob: (req, res, next) => {
-    // create user in db
-    db.Jobs.create({
-      email: req.body.email,
-      company: req.body.company,
-      jobTitle: req.body.jobTitle,
-      location: req.body.location,
-      status: req.body.status,
-      notes: req.body.notes,
-    })
+module.exports = function(app) {
+  app.get("/api/jobs", function(req, res) {
+    db.Jobs.findAll({})
+      .then(function(dbJobs) {
+        res.json(dbJobs);
+        console.log(dbJobs);
+      })
+      // .catch((err) => res.json(err))
+      // console.log(err)
+  });
+  // newJob: (req, res, next) => {
+  //   // create user in db
+  //   db.Jobs.create({
+  //     email: req.body.email,
+  //     company: req.body.company,
+  //     jobTitle: req.body.jobTitle,
+  //     location: req.body.location,
+  //     status: req.body.status,
+  //     notes: req.body.notes,
+  //   })
 
-      // redirect to login
-      .then((jobs) => res.json(jobs))
-      .catch((err) => {
-        res.status(401);
-        next(err);
-      });
-  },
+  //     // redirect to login
+  //     .then((jobs) => res.json(jobs))
+  //     .catch((err) => {
+  //       res.status(401);
+  //       next(err);
+  //     });
+  // },
 
-  findAll: (req, res, next) => {
-    db.Jobs.findAll({ order: [["createdAt", "DESC"]] })
-      .then((jobs) => res.json(jobs))
-      .catch((err) => {
-        res.status(401);
-        next(err);
-      });
-  },
+  // findAll: (req, res, next) => {
+  //   db.Jobs.findAll({ order: [["createdAt", "DESC"]] })
+  //     .then((jobs) => res.json(jobs))
+  //     .catch((err) => {
+  //       res.status(401);
+  //       next(err);
+  //     });
+  // },
 
   //   findTotalJobNumber: (req, res, next) => {
   //     db.Jobs.findAll({

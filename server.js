@@ -30,13 +30,15 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // API routes.
+require("./routes/controllers/jobs.js")(app);
 app.use(routes);
+
 
 // Send every "lost" request to the React app.
 // !Define any API routes before this runs.
-app.get('*', function (req, res) {
-	res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+// app.get('*', function (req, res) {
+// 	res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 // error handling, last middleware.
 app.use((err, req, res, next) => errorHandler(err, req, res, next));
