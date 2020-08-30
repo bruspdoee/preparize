@@ -1,7 +1,7 @@
 module.exports = function (error, req, res, next) {
   console.log("\n--error handler--");
   // before response was sent
-  console.log("New Error");
+  console.log("New Error", error);
     if (res.headersSent) {
       console.log('error sent');
       return next(error)

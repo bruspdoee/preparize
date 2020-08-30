@@ -1,10 +1,10 @@
 import axios from "axios";
 
 export default {
-  newJob: function (jobs) {
-    return axios.post("/jobs/post", jobs);
+  newJob: function (Jobs) {
+    return axios.post("/jobs/post", Jobs);
   },
-  findAll: function (jobs) {
-    return axios.get("/api/jobs/findAll/" + jobs);
+  findAll: function (Jobs) {
+    return axios.get("/api/jobs/");
   },
 };
