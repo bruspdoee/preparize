@@ -1,6 +1,6 @@
 import React from "react";
 import MaterialTable from "material-table";
-import {jobs as JobsAPI, jobs} from "../../utils/API/";
+import { jobs as JobsAPI } from "../../utils/API/";
 
 export default class newJob extends React.Component {
   constructor(props) {
@@ -52,9 +52,8 @@ export default class newJob extends React.Component {
   }
 
   componentWillMount() {
-    // console.log(this.state.user.email)
-    JobsAPI
-      .findAll()
+    console.log(this.state.email);
+    JobsAPI.findAll()
       .then((res) => {
         console.log(res);
 
@@ -74,7 +73,7 @@ export default class newJob extends React.Component {
       })
       .catch((e) => console.log(e));
   }
-  
+
   // handleInputChange = (event) => {
   //   const { name, value } = event.target;
   //   console.log(event.target);
@@ -101,7 +100,7 @@ export default class newJob extends React.Component {
   // };
 
   render() {
-    console.log(this.state.jobs);
+    // console.log(this.state.jobs);
     // console.log(this.state.user.email);
 
     return (
@@ -113,15 +112,18 @@ export default class newJob extends React.Component {
         editable={{
           onRowAdd: (newData) =>
             new Promise((resolve) => {
-              setTimeout(() => {
-                resolve();
-                this.setState((prevState) => {
-                  const data = [...prevState.data];
-                  data.push(newData);
-                  return { ...prevState, data };
-                });
-              },
-              JobsAPI.newJob(newData), 600);
+              setTimeout(
+                () => {
+                  resolve();
+                  // this.setState((prevState) => {
+                  //   const data = [...prevState.data];
+                  //   data.push(newData);
+                  //   return { ...prevState, data };
+                  // });
+                }
+                // JobsAPI.newJob(newData),
+                // 600
+              );
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise((resolve) => {

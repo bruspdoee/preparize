@@ -1,16 +1,16 @@
 const passport = require("./config/passport");
-const path = require('path');
+const path = require("path");
 const PORT = process.env.PORT || 3001;
-const routes = require('./routes');
-const db = require('./models');
+const routes = require("./routes");
+const db = require("./models");
 
-const express = require('express');
+const express = require("express");
 const app = express();
 
-const session = require('express-session');
-const initSession = require('./scripts/initSession');
+const session = require("express-session");
+const initSession = require("./scripts/initSession");
 
-const errorHandler = require('./scripts/errorHandler');
+const errorHandler = require("./scripts/errorHandler");
 
 // middleware:
 // on every requsest will be called in order.
@@ -25,14 +25,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static assets (usually on heroku).
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
 
 // API routes.
 require("./routes/controllers/jobs.js")(app);
 app.use(routes);
-
 
 // Send every "lost" request to the React app.
 // !Define any API routes before this runs.
@@ -49,8 +48,8 @@ app.use((err, req, res, next) => errorHandler(err, req, res, next));
 // db.sequelize.sync({force:true}).then(async () => {
 
 db.sequelize.sync().then(async () => {
-	console.log('connected');
-	app.listen(PORT, () => {
-		console.log(`\n🌎 ==> API server now on http://localhost:${PORT}\n`);
-	});
+  console.log("connected");
+  app.listen(PORT, () => {
+    console.log(`\n🌎 ==> API server now on http://localhost:${PORT}\n`);
+  });
 });
