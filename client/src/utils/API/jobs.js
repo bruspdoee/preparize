@@ -5,6 +5,6 @@ export default {
     return axios.post("/jobs/post", Jobs);
   },
   findAll: function (Jobs) {
-    return axios.get("/api/jobs/");
+    return axios.get("/api/jobs/:email");
   },
 };

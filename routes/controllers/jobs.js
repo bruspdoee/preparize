@@ -1,16 +1,19 @@
 // get reference to DB
 const db = require("../../models");
 
-module.exports = function(app) {
-  app.get("/api/jobs", function(req, res) {
-    db.Jobs.findAll({})
-      .then(function(dbJobs) {
-        res.json(dbJobs);
-        console.log(dbJobs);
-      })
-      // .catch((err) => res.json(err))
-      // console.log(err)
+module.exports = function (app) {
+  app.get("/api/jobs/:email", function (req, res) {
+    db.Jobs.findAll({ where: { email: "brus@brus.com" } }).then(function (
+      dbJobs
+    ) {
+      res.json(dbJobs);
+      console.log(dbJobs);
+    });
+
+    // .catch((err) => res.json(err))
+    // console.log(err)
   });
+
   // newJob: (req, res, next) => {
   //   // create user in db
   //   db.Jobs.create({
